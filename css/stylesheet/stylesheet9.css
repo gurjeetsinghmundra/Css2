@@ -12,6 +12,23 @@
 
 .para span{
     background-color: aquamarine;
-    display: block;
-    height: 30px;
+    display: inline-block;
+    height: 300px;
+}
+
+h1{
+    background-color: aqua;
+    display: inline-block;
+    height: 250px;
+}
+
+a{
+    text-decoration: none;
+    text-decoration:line-through;
+    background-color: chartreuse;
+    display:inline-block;
+    height:100px;
+    width:100px;
+    padding: 30px 33px;
+    box-sizing: border-box;
 }
