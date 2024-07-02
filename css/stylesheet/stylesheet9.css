@@ -1,0 +1,17 @@
+.box{
+    height: 50px ;
+    width: 50px;
+    background-color: red;
+    margin: auto;
+
+}
+
+.para{
+    background-color: aqua;
+}
+
+.para span{
+    background-color: aquamarine;
+    display: block;
+    height: 30px;
+}
