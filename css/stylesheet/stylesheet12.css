@@ -15,8 +15,14 @@ div{
 p{
     background-image: url('../../image/paper.jpg');
     /*background-repeat: no-repeat;*/
+   /* background-repeat: repeat-y;*/
+    background-size: cover   /* background-size: contain; (original photo*/
+
+
 }
 
 body{
     background-image: url('../../image/wallpaper3.jpg');
+    /*Cover contain percentage*/
+    background-size: 70%;
 }
