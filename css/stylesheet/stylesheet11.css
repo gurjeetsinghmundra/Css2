@@ -1,0 +1,39 @@
+.box{
+    width:200px;
+    height: 200px;
+    margin: 20px;
+    border: 2px solid rgb(0, 0, 0);
+   /*  position: relative;*/
+
+   /*fixed and sticky ( sticky is combination of relative and fixed*/
+   position:sticky;
+
+}
+
+#box1{
+    background-color: blue;
+   /* left:100px;
+    bottom:-100px;*/
+    left:40px;
+    top: 40px;
+    z-index:3;
+}
+
+
+#box2{
+    background-color: rgb(149, 255, 0);
+   /*  left:200px;*/
+   left:60px;
+   top: 60px;
+   z-index:2;
+}
+
+#box3{
+    background-color: rgb(255, 0, 81);
+   /*  top:-100px;
+    left:300px;*/
+    left:80px;
+    top: 80px;
+    z-index:1;
+
+}

@@ -1,0 +1,22 @@
+div{
+ border: 2px solid black;
+}
+
+#box1{
+    width:800px;
+    float:left;
+}
+
+#box2{
+    width:300px;
+    float:right;
+}
+
+p{
+    background-image: url('../../image/paper.jpg');
+    /*background-repeat: no-repeat;*/
+}
+
+body{
+    background-image: url('../../image/wallpaper3.jpg');
+}
