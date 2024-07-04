@@ -23,6 +23,8 @@ p{
 
 body{
     background-image: url('../../image/wallpaper3.jpg');
+    background-repeat: no-repeat;
     /*Cover contain percentage*/
-    background-size: 70%;
+    background-size: 25%;
+    background-position: bottom right 10px;
 }
