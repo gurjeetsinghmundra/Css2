@@ -1,6 +1,6 @@
 .container{
     
-    width: 700px;
+    width: 900px;
     height: auto;
     background-color: rgb(28, 135, 217);
     display: flex;
@@ -9,7 +9,7 @@
 /* flex-direction: row; */
 
 /* wrap :- doesn't let content to overflow and adjust it, wrap-reverse */
-    flex-wrap: wrap;
+   /* flex-wrap: wrap; */
 
     /*Horizontal alignment
     left, center, right, space-evenly, space-between & space-around
@@ -29,3 +29,21 @@
     height: 100px;
     width: 100px;
 }
+
+#box1{
+    flex-grow: 1;
+}
+
+#box2{
+    flex-grow: 2;
+}
+
+
+#box3{
+    flex-shrink: 1;
+}
+
+#box4{
+    flex-shrink: 2;
+}
+
