@@ -13,5 +13,10 @@ SHOW TABLES;
 -- To delete database (Drop Database db_name)
 DROP DATABASE guru;
 
+-- To Create table
 
-
+CREATE TABLE employee(
+ employee_id INT,
+ first_name VARCHAR(60),
+ last_name VARCHAR(60)
+); 
