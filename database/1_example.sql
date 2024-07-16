@@ -41,6 +41,21 @@ DESC student;
 
 ALTER TABLE student ADD COLUMN address VARCHAR(60);
 
+-- Alter Table <table-name> ADD COLUMN <column-name> <data-type> AFTER <existing_col_name>
+
+ALTER TABLE student ADD COLUMN contact_number INT AFTER age;
+
+-- Alter Table <table-name> ADD COLUMN <column-name> <data-type> FIRST <existing_col_name>
+
+ALTER TABLE student ADD COLUMN college_name VARCHAR(50) FIRST; 
+
+-- ALTER TABLE <table-name> DROP COLUMN <column-name>;
+
+ALTER TABLE student DROP COLUMN contact_number;
+
+DESC student;
+
+DROP TABLE student;
 
 
 
