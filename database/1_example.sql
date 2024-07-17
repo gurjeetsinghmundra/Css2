@@ -57,5 +57,44 @@ DESC student;
 
 DROP TABLE student;
 
+Create Table library(
+	library_name VARCHAR(50),
+    library_id INT,
+	teacher_name VARCHAR(60)
+);
 
+
+-- To rename column along with datatype
+ALTER TABLE library CHANGE library_id l_id CHAR(4);
+
+DESC library;
+
+-- To rename table 
+ALTER TABLE library RENAME TO college_library;
+
+SHOW TABLES;
+ 
+
+DESC college_library;
+
+CREATE DATABASE xyz_company;
+
+USE xyz_company;
+
+CREATE TABLE department(
+department_id CHAR(2),
+department_name VARCHAR(50)
+);
+
+SHOW TABLES;
+
+DESC department;
+
+-- INSERT INTO <table-name> VALUES (v1,v2,v3....)
+
+INSERT INTO department VALUES ("D1","IT");
+
+SELECT * FROM department;
+
+INSERT INTO department (department_id) VALUES ("D2");
 
