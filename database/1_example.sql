@@ -146,3 +146,11 @@ INSERT INTO course (course_id,course_name,student_name) VALUES
 (7,"Python FSD","Hamza"),
 (8,"Java FSD","Faizan");
 
+DROP  TABLE department;
+
+CREATE TABLE department(
+department_id INT UNIQUE,
+department_name VARCHAR(50) NOT NULL
+
+);
+
