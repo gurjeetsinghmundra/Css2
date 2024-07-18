@@ -149,8 +149,61 @@ INSERT INTO course (course_id,course_name,student_name) VALUES
 DROP  TABLE department;
 
 CREATE TABLE department(
-department_id INT UNIQUE,
+department_id INT UNIQUE NOT NULL,
 department_name VARCHAR(50) NOT NULL
-
 );
 
+SHOW TABLES;
+DESC department;
+
+INSERT INTO department VALUES(101,"GURU");
+SELECT * FROM department;
+
+INSERT INTO department VALUES(101,"xyz");
+INSERT INTO department VALUES(102,null);
+
+
+DROP TABLE employee;
+
+CREATE TABLE employee(
+employee_id CHAR(2) PRIMARY KEY,
+employee_name VARCHAR(60) NOT NULL,
+employee_email VARCHAR(60) UNIQUE NOT NULL
+);
+
+DESC employee;
+
+-- To add Not null constraint
+-- ALTER TABLE <table-name> MODIFY <col-name> <data-tyoe> NOT NULL;
+
+-- TO remove not null constraint
+-- Alter Table <table-name> MODIFY <col-name> <data-type>;
+
+ALTER TABLE employee MODIFY employee_name VARCHAR(60); 
+
+ALTER TABLE employee MODIFY employee_name VARCHAR(60) NOT NULL;
+
+SHOW INDEXES FROM employee;
+
+ALTER TABLE employee DROP INDEX employee_email;
+
+ALTER TABLE employee ADD UNIQUE (employee_email);
+
+ALTER TABLE employee DROP PRIMARY KEY;
+
+DESC employee;
+
+
+
+
+ALTER TABLE employee ADD PRIMARY KEY (employee_id);
+
+ALTER TABLE employee ADD COLUMN employee_salary INT;
+DESC employee;
+
+ALTER TABLE employee ALTER employee_salary SET DEFAULT (40000);
+
+SELECT * FROM employee;
+
+INSERT INTO employee (employee_id,employee_name,employee_email) VALUES 
+("E2","Guru","g@gmail.com");
