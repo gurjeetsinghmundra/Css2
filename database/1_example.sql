@@ -221,3 +221,37 @@ INSERT INTO employee VALUES
 ("E4","G1","g2@gmail.com",10000);
 
 
+-- ALTER TABLE <table-name> DROP CONSTRAINT check_salary;
+
+ALTER TABLE employee DROP CONSTRAINT check_salary;
+
+
+CREATE TABLE category(
+c_id INT PRIMARY KEY,
+name VARCHAR(60)
+);
+
+ALTER TABLE category MODIFY name VARCHAR(50) NOT NULL;
+
+DESC category;
+
+
+CREATE TABLE product( 
+p_id INT PRIMARY KEY,
+p_name VARCHAR(60) NOT NULL,
+p_price INT DEFAULT 0 CHECK (p_price>=0),
+c_id INT,
+CONSTRAINT product_category FOREIGN KEY (c_id)
+REFERENCES category(c_id)
+);
+
+DESC product;
+
+INSERT INTO category VALUES (1,"Guru");
+INSERT INTO category VALUES (2,"Electronics");
+
+SELECT * FROM category;
+
+INSERT INTO product VALUES(2,"Laptop",50000,2);
+
+SELECT * FROM product;
