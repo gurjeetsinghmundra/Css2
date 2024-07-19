@@ -205,5 +205,19 @@ ALTER TABLE employee ALTER employee_salary SET DEFAULT (40000);
 
 SELECT * FROM employee;
 
+DESC employee;
 INSERT INTO employee (employee_id,employee_name,employee_email) VALUES 
 ("E2","Guru","g@gmail.com");
+
+
+ALTER TABLE employee ALTER employee_salary DROP DEFAULT;
+
+INSERT INTO employee VALUES 
+("E3","G","g1@gmail.com",30000);
+
+-- ALTER TABLE <table-name> ADD CONSTRAINT <constraint_name> CHECK (condition);
+ALTER TABLE employee ADD CONSTRAINT check_salary CHECK (employee_salary>=0);
+INSERT INTO employee VALUES 
+("E4","G1","g2@gmail.com",10000);
+
+
