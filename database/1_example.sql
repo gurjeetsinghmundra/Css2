@@ -277,3 +277,49 @@ REFERENCES school(s_id)
 );
 
 DESC student;
+
+INSERT INTO school VALUES(1,"Holy Cross High School"),
+(2,"Khalsa");
+
+SELECT * FROM school;
+
+INSERT INTO student VALUES(111,"Gurjeet",348973247,1),
+(222,"Guru",73247,2);
+
+
+DROP TABLE school;
+DROP TABLE student;
+
+
+CREATE TABLE courses (
+c_id INT PRIMARY KEY,
+c_name VARCHAR(60) NOT NULL
+);
+
+CREATE TABLE teacher(
+t_id INT PRIMARY KEY,
+t_name VARCHAR(60),
+t_num BIGINT,
+c_id INT,
+CONSTRAINT teacher_course FOREIGN KEY(c_id)
+REFERENCES courses(c_id)
+);
+
+DROP TABLE teacher;
+
+DESC courses;
+DESC teacher;
+
+-- Product & Category
+
+ALTER TABLE product DROP FOREIGN KEY product_category;
+
+DESC product;
+INSERT INTO product VALUES(120,"tshirt",520,100);
+
+SELECT * FROM product;
+
+INSERT INTO category values(100,"Clothes");
+
+
+
