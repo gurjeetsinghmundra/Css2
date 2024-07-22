@@ -255,3 +255,25 @@ SELECT * FROM category;
 INSERT INTO product VALUES(2,"Laptop",50000,2);
 
 SELECT * FROM product;
+
+DESC category;
+
+
+
+CREATE TABLE school(
+s_id INT PRIMARY KEY,
+s_name VARCHAR(60) NOT NULL
+);
+
+DESC school;
+
+CREATE TABLE student(
+roll_no INT PRIMARY KEY,
+st_name VARCHAR(60) NOT NULL,
+Phone_no BIGINT,
+s_id INT,
+CONSTRAINT student_school FOREIGN KEY(s_id)
+REFERENCES school(s_id)
+);
+
+DESC student;
