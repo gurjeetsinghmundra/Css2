@@ -312,6 +312,11 @@ DESC teacher;
 
 -- Product & Category
 
+
+
+
+-- Drop foreign key throught alter
+
 ALTER TABLE product DROP FOREIGN KEY product_category;
 
 DESC product;
@@ -322,4 +327,33 @@ SELECT * FROM product;
 INSERT INTO category values(100,"Clothes");
 
 
+-- Add foreign key throught alter
 
+ALTER TABLE product ADD CONSTRAINT product_category
+FOREIGN KEY (c_id) REFERENCES category(c_id);
+
+USE xyz_company;
+
+INSERT INTO product VALUES(130,"pants",600,100);
+
+SELECT * FROM product;
+DESC product;
+
+--
+select(100>45);
+select(100<45); 
+select(100=100);
+select(100!=100);
+select(500<=200);
+select(60<=100);
+
+-- and (ALL statements shoukd be true)
+
+select(100=100 and 10=5 and 5<10);
+select(100=100 and 10>=5 and 7<10);
+
+-- or
+
+select(100<200 or 200<=100);
+select(100<200 or 500=500);
+select(200<1 or 1>=100);
