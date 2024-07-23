@@ -350,10 +350,56 @@ select(60<=100);
 -- and (ALL statements shoukd be true)
 
 select(100=100 and 10=5 and 5<10);
-select(100=100 and 10>=5 and 7<10);
+select not(100=100 and 10>=5 and 7<10);
 
--- or
+-- or (Atleast 1 statement need to be true)
 
 select(100<200 or 200<=100);
 select(100<200 or 500=500);
-select(200<1 or 1>=100);
+select not(200<1 or 1>=100);
+
+-- like , between , In(in shortcut of or)
+
+-- 
+
+CREATE TABLE department1(
+d_id INT PRIMARY KEY,
+department VARCHAR(60) NOT NULL
+);
+
+CREATE TABLE employee1(
+e_id INT PRIMARY KEY,
+ename VARCHAR(60),
+city VARCHAR(60),
+salary BIGINT,
+d_id INT,
+CONSTRAINT employee_department FOREIGN KEY(d_id)
+REFERENCES department1(d_id)
+);
+
+DESC department1;
+DESC employee1;
+
+
+INSERT INTO department1 VALUES(1,"Marketing"),
+(2,"IT"),
+(3,"Human Resource");
+
+SELECT * FROM department1;
+
+INSERT INTO employee1 VALUES(111,"Nikita","Mumbai",67000,1),
+(112,"Prajakta","Pune",80000,1),
+(113,"Manisha","Banglore",20000,2),
+(114,"Nilesh","Mumbai",35469,3),
+(115,"Monal","Pune",34452,2);
+
+SELECT * FROM employee1;
+
+-- SELECT col_name1,.... from table_name;
+
+USE xyz_company;
+
+
+SELECT e_id FROM employee1;
+SELECT ename,salary FROM employee1;
+SELECT d_id FROM department1;
