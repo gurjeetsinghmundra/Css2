@@ -401,5 +401,32 @@ USE xyz_company;
 
 
 SELECT e_id FROM employee1;
-SELECT ename,salary FROM employee1;
+SELECT ename,salary AS emp_salary FROM employee1;
 SELECT d_id FROM department1;
+
+-- AS(Alias) is used to change column name temporarily
+
+SELECT (10>7) AS answer;
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- WHERE Clause 
+
+SELECT * FROM employee1 WHERE e_id="111";
+
+SELECT ename,salary FROM employee1 WHERE e_id="111";
+
+SELECT d_id FROM employee1 WHERE e_id="111";
+
+SELECT * FROM employee1 WHERE city="mumbai";
+
+SELECT * FROM employee1 WHERE salary<50000;
+
+SELECT * FROM employee1 WHERE salary<50000 AND city="mumbai";
+
+SELECT * FROM employee1 WHERE city="mumbai" OR city="banglore";
+
+SELECT * FROM employee1 WHERE salary between 10000 and 50000;
+
+SELECT * FROM employee1 WHERE salary>=10000 and salary<=70000;
+
+SELECT * FROM employee1 WHERE d_id="1" and salary<=20000;
