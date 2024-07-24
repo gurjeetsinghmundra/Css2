@@ -430,3 +430,51 @@ SELECT * FROM employee1 WHERE salary between 10000 and 50000;
 SELECT * FROM employee1 WHERE salary>=10000 and salary<=70000;
 
 SELECT * FROM employee1 WHERE d_id="1" and salary<=20000;
+
+SELECT * FROM employee1 WHERE d_id="1" and city="pune";
+
+SELECT * FROM employee1 WHERE e_id="111" OR e_id="112" OR e_id="113";
+SELECT * FROM employee1 WHERE e_id IN(111,112,113);
+
+SELECT * FROM employee1 WHERE city IN("mumbai","pune","banglore");
+
+-- BETWEEN 
+SELECT * FROM employee1 WHERE salary BETWEEN 20000 AND 50000;
+
+
+ALTER TABLE employee1 ADD COLUMN age INT;
+DESC employee1;
+
+SELECT * FROM employee1;
+
+UPDATE employee1 set age=0;
+UPDATE employee1 set age=25 WHERE e_id="111";
+UPDATE employee1 set age=30 WHERE e_id="112";
+UPDATE employee1 set age=27 WHERE e_id="113";
+UPDATE employee1 set age=22 WHERE e_id="114" OR e_id="115";
+
+UPDATE employee1 set city="Pune" WHERE e_id="111";
+UPDATE employee1 set city="Mumbai" WHERE e_id="112";
+
+UPDATE employee1 set salary=salary+5000 WHERE e_id="115";
+
+UPDATE employee1 set age=age+2;
+
+UPDATE employee1 set salary=salary-2000 WHERE d_id="1";
+
+
+UPDATE employee1 set city=null WHERE e_id IN(111,113);
+
+-- IS
+SELECT * FROM employee1 WHERE city IS NULL;
+SELECT * FROM employee1 WHERE city IS NOT NULL;
+
+
+SELECT * FROM employee1;
+
+SELECT * FROM employee1 WHERE e_id IN(112,113,114,115);
+SELECT * FROM employee1 WHERE e_id!=111;
+SELECT * FROM employee1 WHERE ename!="nikita";
+
+
+
