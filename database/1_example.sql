@@ -588,3 +588,53 @@ count(e_id) AS Total_count
 FROM employee1
 GROUP BY d_id;
 
+SELECT * FROM employee1;
+
+-- add column
+ALTER TABLE employee1 ADD COLUMN gender VARCHAR(60);
+
+-- add or update values in column
+UPDATE employee1 set gender="F";
+UPDATE employee1 set gender=null WHERE e_id="113" ;
+UPDATE employee1 set gender="M" WHERE e_id="114" ;
+
+SELECT gender,count(e_id) AS total_count FROM employee1 
+GROUP BY gender;
+
+-- you cant use WHERE clause after applying GROUP BY so instead we use HAVING
+SELECT gender,count(e_id)
+FROM employee1 GROUP BY gender HAVING gender="F";
+
+-- kitne females ki salary means group by 
+
+SELECT count(*) FROM employee1 WHERE salary<50000 AND gender="F";
+
+SELECT gender ,count(e_id) FROM employee1  WHERE salary<50000 
+GROUP BY gender HAVING gender="F";
+
+SELECT d_id,avg(salary) AS salary_avg  
+FROM employee1 WHERE salary<50000
+GROUP BY d_id;
+
+-- same
+
+SELECT d_id,avg(salary) AS salary_avg  
+FROM employee1 
+GROUP BY d_id HAVING avg(salary)<50000 OR salary_avg<50000;
+
+SELECT d_id,avg(salary) AS salary_avg  
+FROM employee1 
+GROUP BY d_id ORDER BY salary_avg LIMIT 1;
+
+SELECT d_id,avg(salary) AS salary_avg  
+FROM employee1 
+GROUP BY d_id ORDER BY salary_avg DESC LIMIT 1;
+
+SELECT d_id,count(e_id) AS total_emp
+FROM employee1
+GROUP BY d_id ORDER BY total_emp LIMIT 1;
+
+SELECT d_id,sum(salary)
+FROM employee1
+GROUP BY d_id
+ORDER BY sum(salary) LIMIT 1;
