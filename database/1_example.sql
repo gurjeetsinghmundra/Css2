@@ -476,5 +476,24 @@ SELECT * FROM employee1 WHERE e_id IN(112,113,114,115);
 SELECT * FROM employee1 WHERE e_id!=111;
 SELECT * FROM employee1 WHERE ename!="nikita";
 
+use xyz_company;
 
+-- LIKE
 
+SELECT * FROM employee1 WHERE ename LIKE "n%";
+SELECT * FROM employee1 WHERE ename LIKE "n%a";
+SELECT * FROM employee1 WHERE ename LIKE "m_n%";
+SELECT * FROM employee1 WHERE ename LIKE "m_n_s%";
+SELECT * FROM employee1 WHERE ename NOT LIKE "m_n%";
+SELECT * FROM employee1 WHERE ename LIKE "%n%";
+SELECT * FROM employee1 WHERE ename NOT LIKE "m%";
+SELECT * FROM employee1 WHERE ename LIKE "%ta";
+SELECT ename FROM employee1 WHERE city LIKE "m%" AND ename LIKE "p%";
+SELECT * FROM employee1 WHERE ename LIKE "%t_";
+
+-- DELETE FROM <table-name> WHERE condition;
+
+DELETE FROM employee1 WHERE e_id="114";
+DELETE FROM employee1 WHERE d_id="1" AND age<30;
+
+SELECT * FROM employee1;
