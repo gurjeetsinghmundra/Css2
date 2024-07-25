@@ -387,11 +387,11 @@ INSERT INTO department1 VALUES(1,"Marketing"),
 
 SELECT * FROM department1;
 
-INSERT INTO employee1 VALUES(111,"Nikita","Mumbai",67000,1),
-(112,"Prajakta","Pune",80000,1),
-(113,"Manisha","Banglore",20000,2),
-(114,"Nilesh","Mumbai",35469,3),
-(115,"Monal","Pune",34452,2);
+INSERT INTO employee1 VALUES(111,"Nikita","Mumbai",67000,1,23),
+(112,"Prajakta","Pune",80000,1,25),
+(113,"Manisha","Banglore",20000,2,29),
+(114,"Nilesh","Mumbai",35469,3,22),
+(115,"Monal","Pune",34452,2,20);
 
 SELECT * FROM employee1;
 
@@ -495,5 +495,68 @@ SELECT * FROM employee1 WHERE ename LIKE "%t_";
 
 DELETE FROM employee1 WHERE e_id="114";
 DELETE FROM employee1 WHERE d_id="1" AND age<30;
+DELETE FROM employee1 WHERE ename LIKE "%l";
+DELETE FROM employee1;
+
+-- truncate and delete will delete  records in tables and drop will  delete table.
+-- delete is mostly used with where clause
+
+TRUNCATE TABLE employee1;
+SELECT * FROM employee1;
+
+-- Aggregate functions
+-- function is build-in logic (joh phele se he bana hai)-- 
+
+-- sum
+-- count
+-- min
+-- max
+-- avg   12+12+10/3
+
+SELECT COUNT(*) AS no_of_employees FROM employee1; 
+SELECT * FROM employee1;
+SELECT COUNT(*) AS no_of_departments FROM department1;
+
+-- DISTINCT will not show repeated values
+SELECT DISTINCT city FROM employee1;
+SELECT * FROM department1;
+
+INSERT INTO employee1 VALUES(116,"Guru",null,90000,1,20);
+
+SELECT COUNT(DISTINCT city) FROM employee1;
+
+SELECT COUNT(DISTINCT d_id) FROM employee1;
+
+-- min & max
+SELECT MIN(salary) FROM employee1;
+SELECT MIN(age) FROM employee1;
+
+SELECT MAX(salary) FROM employee1;
+
+-- sum
+SELECT SUM(salary) FROM employee1;
+SELECT SUM(salary*12) FROM employee1;
+
+SELECT SUM(salary)*12 FROM employee1; 
+
+-- avg
+
+SELECT AVG(salary) FROM employee1;
+SELECT AVG(age) FROM employee1;
+
+-- order by (ASC by default & DESC)
+SELECT * FROM employee1 ORDER BY salary;
+SELECT * FROM employee1 ORDER BY salary DESC;
+
+SELECT * FROM employee1 ORDER BY age;
+SELECT * FROM employee1 ORDER BY age DESC;
+
+SELECT * FROM employee1 ORDER BY ename;
+
+UPDATE employee1 set salary=80000 WHERE e_id="111";
+
 
 SELECT * FROM employee1;
+
+SELECT * FROM employee1 ORDER BY salary DESC,age DESC;
+
