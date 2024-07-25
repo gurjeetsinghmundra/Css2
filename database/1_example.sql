@@ -560,3 +560,31 @@ SELECT * FROM employee1;
 
 SELECT * FROM employee1 ORDER BY salary DESC,age DESC;
 
+use xyz_company;
+-- 
+
+SELECT * FROM employee1 ORDER BY salary LIMIT 1;
+SELECT * FROM employee1 ORDER BY salary DESC,age DESC LIMIT 3;
+SELECT * FROM employee1 ORDER BY age LIMIT 1;
+SELECT * FROM employee1 ORDER BY age DESC LIMIT 1;
+
+-- Group BY
+
+SELECT d_id,count(e_id) FROM employee1
+GROUP BY d_id;
+
+SELECT city,count(e_id) FROM employee1
+GROUP BY city;
+
+SELECT city,sum(salary),avg(salary),min(salary),max(salary),count(e_id)
+FROM employee1 GROUP BY city;
+
+SELECT d_id,
+sum(salary) AS total_salary,
+avg(salary) AS avg_salary,
+min(salary) AS min_salary,
+max(salary) AS max_salary,
+count(e_id) AS Total_count
+FROM employee1
+GROUP BY d_id;
+
