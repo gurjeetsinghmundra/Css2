@@ -638,3 +638,34 @@ SELECT d_id,sum(salary)
 FROM employee1
 GROUP BY d_id
 ORDER BY sum(salary) LIMIT 1;
+
+
+use xyz_company;
+
+SELECT CONCAT ("Gurjeet","","Singh") AS name1;
+
+SELECT * FROM employee1;
+
+-- E1-Nikita
+SELECT e_id,ename,concat(e_id,"-",ename) AS employee_details FROM employee1;
+
+-- email e1.ename@itvedant.com
+
+SELECT e_id,ename,concat(e_id,".",ename,"@itvedant.com") AS email FROM employee1;
+
+-- UPPER("sql") SQL
+-- used while taking input from user  
+
+SELECT UPPER("sql");
+SELECT LOWER("ABC");
+
+INSERT INTO employee1 VALUES
+("117","Ankita",LOWER("MUmbAi"),25900,1,26,UPPER("f"));
+
+-- Length - Spaces are also included
+
+SELECT LENGTH("  HELLO");
+SELECT LENGTH("Nisha")>20;
+
+SELECT ename,LENGTH(ename) FROM employee1;
+
