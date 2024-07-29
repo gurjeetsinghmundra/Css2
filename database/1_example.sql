@@ -669,3 +669,31 @@ SELECT LENGTH("Nisha")>20;
 
 SELECT ename,LENGTH(ename) FROM employee1;
 
+-- H e l l o
+-- 1 2 3 4 5
+--                   starting point,how much characters you want to count  
+SELECT substr("Hello",2,4);
+SELECT substr("Hello",3,2);
+SELECT substr("Hello",5,1);
+SELECT substr("Gurjeet afsaf",LENGTH("Gurjeet afsaf"),1);
+
+SELECT ename,substr(ename,Length(ename),1) AS last_char FROM employee1;
+
+
+-- Flow will be length,substr,upper
+SELECT ename,substr(UPPER(ename),Length(ename),1) AS last_char FROM employee1;
+
+SELECT ename,concat(ename,"-",substr(UPPER(ename),Length(ename),1)) AS last_char FROM employee1;
+
+SELECT ename,substr(lower(ename),1,1) FROM employee1;
+
+SELECT ename,concat(substr(lower(ename),1,1),substr(Upper(ename),2,length(ename)-1)) AS change_letter FROM employee1;
+
+--  2,4    2,3    2,5     2,5
+--  Nikita Pooja Netrali Gurjeet 
+
+SELECT ename,concat(substr(lower(ename),1,1),
+substr(Upper(ename),2,length(ename)-2),
+substr(lower(ename),length(ename),1))
+AS change_alphabet FROM employee1;
+
