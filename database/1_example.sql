@@ -697,3 +697,40 @@ substr(Upper(ename),2,length(ename)-2),
 substr(lower(ename),length(ename),1))
 AS change_alphabet FROM employee1;
 
+
+-- mod(m,n)
+-- mod means remainder
+
+SELECT mod(71,3);
+SELECT round(5.785,2);
+SELECT CEIL(7.50);
+SELECT FLOOR(12.75);
+SELECT sqrt(17);
+
+SELECT round(sqrt(17),4);
+
+SELECT SIGN(-80);
+SELECT SIGN(4);
+SELECT SIGN(0);
+
+SELECT TRUNCATE(5.6723478943,4);
+SELECT ROUND(5.4729478943,3);
+
+SELECT POW(5,3);
+
+-- ----------------------------------------------------------------------------------------------------------
+
+USE xyz_company;
+
+SELECT round(AVG(salary)) AS avg_salary FROM employee1;
+
+-- Date Related Functions
+-- YYYY-MM-DD
+SELECT curdate();
+-- HH:MM:SS
+SELECT curtime();
+-- YYYY-MM-DD HH:MM:SS
+SELECT NOW();
+
+SELECT DATE("2024-10-10 07:25:20");
+SELECT DATE(NOW());
