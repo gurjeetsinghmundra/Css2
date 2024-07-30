@@ -734,3 +734,47 @@ SELECT NOW();
 
 SELECT DATE("2024-10-10 07:25:20");
 SELECT DATE(NOW());
+
+SELECT DAY("2024-10-20");
+SELECT YEAR("2024-10-20");
+
+SELECT MONTH(curdate());
+
+-- 
+DESC employee1;
+ALTER TABLE employee1 ADD COLUMN joining_date DATE;
+
+SELECT * FROM employee1;
+
+UPDATE employee1 SET joining_date="2023-04-02" WHERE e_id="111";
+UPDATE employee1 SET joining_date="2024-01-24" WHERE e_id="112";
+UPDATE employee1 SET joining_date="2021-05-17" WHERE e_id="113";
+UPDATE employee1 SET joining_date="2024-01-30" WHERE e_id="114";
+UPDATE employee1 SET joining_date="2020-12-15" WHERE e_id="115";
+UPDATE employee1 SET joining_date="2022-10-10" WHERE e_id="117";
+
+SELECT e_id,ename,joining_date,YEAR(joining_date) FROM employee1;
+
+
+SELECT e_id,ename FROM employee1 WHERE YEAR(joining_date) IN ("2022","2023");
+
+SELECT YEAR(joining_date)  AS joining_year,COUNT(e_id) AS totaL_emp
+FROM employee1 GROUP BY YEAR(joining_date) HAVING joining_year=2024;
+
+-- ---------------------------------------------------------------------
+
+-- These Are placeholders
+SELECT date_format("2024-11-21","%d-%m-%y");
+SELECT date_format("2024-11-21","%d***%m-%y");
+
+SELECT date_format("2024-11-21","%D-%M-%Y");
+
+--  %w is a week number 0-sunday 1-momday 2-tues ....
+
+SELECT date_format("2024-07-28","%D %M %Y %w");
+SELECT date_format("2024-07-28","%D %M %Y %W");
+SELECT date_format(now(),"%D %M %Y %H::%i::%s");
+
+SELECT date_format(now(),"%D %b %Y %H::%i::%s");
+SELECT date_format("2024-07-28","%D %M %Y %W");
+
