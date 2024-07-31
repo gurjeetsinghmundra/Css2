@@ -789,12 +789,7 @@ CASE
 	WHEN salary<60000 THEN "Average"
     WHEN salary<100000 THEN "Very High"
     ELSE"-"
-END AS salary_data
-FROM employee1;
-
-SELECT * FROM department1;
-
-SELECT ename,
+END AS salary_data,
 CASE
 	WHEN d_id=1 THEN "Marketing"
 	WHEN d_id=2 THEN "IT"
@@ -803,3 +798,31 @@ CASE
 END AS department_details
 FROM employee1;
 
+UPDATE employee1 SET salary=
+CASE
+	WHEN d_id=1 THEN salary+2000
+    WHEN d_id=2 THEN salary+4000
+    WHEN d_id=3 THEN salary+2500
+    ELSE salary
+END;
+
+SELECT * FROM employee1;
+
+ALTER TABLE employee1 ADD COLUMN email VARCHAR(90);
+
+
+-- focus (not done by you)
+UPDATE employee1 set email=concat(LOWER(SUBSTR(city,1,1)),".",lower(ename),"_",e_id,"@itvedant.com");
+
+-- COALESCE (First Non-null Value)
+
+SELECT coalesce(null,12,45,65);
+SELECT coalesce(null,null);
+SELECT coalesce("NULL",null,null,10);
+
+ALTER TABLE employee1 ADD COLUMN phone_number BIGINT;
+
+
+UPDATE employee1 set phone_number=942243932,email=null WHERE e_id IN (111,112,113);
+
+SELECT ename,email,phone_number,coalesce(email,phone_number) FROM employee1;
