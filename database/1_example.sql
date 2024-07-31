@@ -778,3 +778,28 @@ SELECT date_format(now(),"%D %M %Y %H::%i::%s");
 SELECT date_format(now(),"%D %b %Y %H::%i::%s");
 SELECT date_format("2024-07-28","%D %M %Y %W");
 
+-- if first condition is true it doesnt check next condition but if it's false then it goes to next condition
+
+USE xyz_company;
+SELECT * FROM employee1;
+
+SELECT ename,salary,
+CASE
+	WHEN salary<30000 THEN "Very Less"
+	WHEN salary<60000 THEN "Average"
+    WHEN salary<100000 THEN "Very High"
+    ELSE"-"
+END AS salary_data
+FROM employee1;
+
+SELECT * FROM department1;
+
+SELECT ename,
+CASE
+	WHEN d_id=1 THEN "Marketing"
+	WHEN d_id=2 THEN "IT"
+    WHEN d_id=3 THEN "Human Resource"
+    ELSE"-"
+END AS department_details
+FROM employee1;
+
