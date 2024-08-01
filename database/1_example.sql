@@ -826,3 +826,39 @@ ALTER TABLE employee1 ADD COLUMN phone_number BIGINT;
 UPDATE employee1 set phone_number=942243932,email=null WHERE e_id IN (111,112,113);
 
 SELECT ename,email,phone_number,coalesce(email,phone_number) FROM employee1;
+
+
+USE xyz_company;
+
+SELECT datediff(curdate(),"2024-07-25");
+
+SELECT * FROM employee1;
+
+SELECT ename,joining_date,datediff(curdate(),joining_date) As no_of_days FROM employee1;
+
+SELECT ename,joining_date,
+CASE
+	WHEN datediff(curdate(),joining_date)>365 THEN "more than 1 year"	
+    ELSE"less than 1 year"
+END AS total_year
+FROM employee1;
+
+-- date_add
+
+SELECT date_add(curdate(), INTERVAL 70 day);
+SELECT date_add(curdate(),INTERVAL 1 month);
+SELECT date_add(curdate(),INTERVAL 1 year);
+SELECT date_add(curdate(), INTERVAL -10 day);
+
+-- Permanent Column
+ALTER TABLE employee1 ADD COLUMN anniversary DATE;
+SELECT * FROM employee1;
+UPDATE employee1 set anniversary=date_add(joining_date,INTERVAL 1 year);
+ALTER TABLE employee1 DROP COLUMN anniversary;
+
+-- Temporary Column
+SELECT *,
+date_add(joining_date,INTERVAL 1 year) AS anniversary
+FROM employee1;
+
+SELECT * FROM employee1;
