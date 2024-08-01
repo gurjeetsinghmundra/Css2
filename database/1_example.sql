@@ -861,4 +861,24 @@ SELECT *,
 date_add(joining_date,INTERVAL 1 year) AS anniversary
 FROM employee1;
 
+-- ------------------------------------------------------------------------------------
+-- Joins
+
 SELECT * FROM employee1;
+SELECT * FROM department1;
+
+UPDATE employee1 SET d_id=null WHERE e_id=117;
+INSERT INTO department1 values(4,"Operations");
+
+-- INNER JOIN
+
+SELECT * FROM employee1
+INNER JOIN department1
+ON
+employee1.d_id=department1.d_id;
+
+-- Shortcuts
+SELECT e.ename,d.d_id,d.department FROM employee1 e
+INNER JOIN department1 AS d
+ON
+e.d_id=d.d_id;
