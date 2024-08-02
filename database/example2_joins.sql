@@ -518,4 +518,43 @@ ON e.department=d.d_id
 WHERE e.department IS null
 ;
 
+-- Cross JOIN (basically multiplication)
+
+SELECT * FROM employee,department;
+
+SELECT * FROM employee e,department d 
+WHERE e.department=d.d_id AND e.department="D1";
+
+
+SELECT * FROM department;
+DESC department;
+
+
+CREATE TABLE department_2(
+d_id CHAR(2) PRIMARY KEY,
+department_name VARCHAR(100),
+city VARCHAR(150)
+);
+
+DESC department_2;
+
+INSERT INTO department_2 VALUES
+("D1","Marketing","Mumbai"),
+("D2","Training","Pune");
+
+DELETE FROM department_2 WHERE d_id="D2";
+SELECT * FROM department_2;
+INSERT INTO department_2 VALUE("D6","Training","Pune");
+
+-- UNION JOIN (SHOWS ONLY DISTINCT VALUE NOT DUPLICATES)
+-- Number of columns should match
+
+SELECT d_id,department FROM department
+UNION 
+SELECT d_id,department_name FROM department_2;
+
+-- UNION ALL (will also show repeated values)
+SELECT d_id,department FROM department
+UNION ALL
+SELECT d_id,department_name FROM department_2;
 
