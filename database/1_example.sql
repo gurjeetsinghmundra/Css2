@@ -882,3 +882,118 @@ SELECT e.ename,d.d_id,d.department FROM employee1 e
 INNER JOIN department1 AS d
 ON
 e.d_id=d.d_id;
+
+
+-- LEFT JOIN
+
+-- ----------------------------------------------------------------------------
+USE xyz_company;
+
+SELECT * FROM employee1 e
+LEFT JOIN department1 d
+ON
+e.d_id=d.d_id
+ORDER BY e.salary DESC LIMIT 1;
+
+SELECT * FROM employee1;
+INSERT INTO department1 VALUE("D4","Operations"),
+("D5","Sales");
+INSERT  INTO employee1 (e_id,ename,city,salary,age) VALUE 
+ (7,"Ankita","pune",50000,25);
+ 
+-- RIGHT JOIN
+SELECT * FROM employee1 e
+RIGHT JOIN department1 d 
+ON e.d_id=d.d_id
+GROUP BY d.d_id
+;
+
+-- For Checking if column is null or not use IS ,dont use =
+SELECT d.* FROM employee1 e
+RIGHT JOIN department1 d 
+ON e.d_id=d.d_id
+WHERE e.d_id IS null
+;
+
+
+-- Cross JOIN (basically multiplication)
+
+SELECT * FROM employee1,department1;
+
+SELECT * FROM employee1 e,department1 d 
+WHERE e.d_id=d.d_id AND e.d_id="D1";
+
+
+SELECT * FROM department1;
+DESC department1;
+
+
+CREATE TABLE department2(
+d_id CHAR(2) PRIMARY KEY,
+department_name VARCHAR(100),
+city VARCHAR(150)
+);
+
+DESC department2;
+
+INSERT INTO department_2 VALUES
+("D1","Marketing","Mumbai"),
+("D2","Training","Pune");
+
+DELETE FROM department2 WHERE d_id="D2";
+SELECT * FROM department2;
+INSERT INTO department2 VALUE("D6","Training","Pune");
+
+-- UNION JOIN (SHOWS ONLY DISTINCT VALUE NOT DUPLICATES)
+-- Number of columns should match
+
+SELECT d_id,department1 FROM department1
+UNION 
+SELECT d_id,department_name FROM department2;
+
+-- UNION ALL (will also show repeated values)
+SELECT d_id,department FROM department1
+UNION ALL
+SELECT d_id,department_name FROM department2;
+
+
+-- -----------------------------------------------------------------------------------------------------------
+--  Full Outer Joins
+-- left table is priority jada 
+
+SELECT * FROM employee1 e
+LEFT JOIN department1 d
+ON e.d_id=d.d_id
+UNION
+SELECT * FROM employee1 e
+RIGHT JOIN department1 d
+ON e.d_id=d.d_id;
+
+-- Same Same But Different
+SELECT * FROM employee1;
+
+-- EQUI JOIN (Rarely Used)
+-- Bus equal operator use hoyega
+SELECT * FROM employee1 e, department1 d
+WHERE e.d_id=d.d_id;
+
+-- NON-EQUI JOIN
+-- Koe Aur operator use kiya toh game khatam
+SELECT * FROM employee1 e, department1 d
+WHERE e.d_id=d.d_id AND e.salary<50000;
+
+-- Subqueries
+
+SELECT MIN(salary) FROM employee1;
+SELECT * FROM employee1 WHERE salary=(SELECT MIN(salary) FROM employee1);
+
+SELECT * FROM employee1;
+
+
+SELECT MAX(salary) FROM employee1;
+SELECT * FROM employee1 WHERE salary=86000;
+SELECT * FROM employee1 WHERE salary=(SELECT MAX(salary) FROM employee1);
+
+SELECT AVG(salary) FROM employee1;
+SELECT * FROM employee1 WHERE salary<(SELECT AVG(salary) FROM employee1);
+
