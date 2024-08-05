@@ -997,3 +997,30 @@ SELECT * FROM employee1 WHERE salary=(SELECT MAX(salary) FROM employee1);
 SELECT AVG(salary) FROM employee1;
 SELECT * FROM employee1 WHERE salary<(SELECT AVG(salary) FROM employee1);
 
+
+-- Logic Ques
+SELECT * FROM employee1 ORDER BY salary DESC ; 
+SELECT * FROM employee1 WHERE salary<(SELECT MAX(salary) FROM employee1)
+ORDER BY salary DESC LIMIT 1;
+
+
+SELECT d_id FROM department1 WHERE department="Marketing";
+SELECT * FROM employee1 WHERE d_id=(SELECT d_id FROM department1 WHERE department="Marketing");
+
+
+ALTER TABLE department1 ADD COLUMN department_city VARCHAR(100);
+SELECT * FROM department1;
+SELECT * FROM employee1;
+
+UPDATE department1 SET department_city="MUMBAI" WHERE d_id=1;
+UPDATE department1 SET department_city="PUNE" WHERE d_id=0;
+UPDATE department1 SET department_city="MUMBAI" WHERE d_id=2;
+UPDATE department1 SET department_city="BANGLORE" WHERE d_id=3;
+UPDATE department1 SET department_city="MUMBAI" WHERE d_id=4;
+
+
+SELECT d_id FROM department1 WHERE department_city="Mumbai";
+SELECT * FROM employee1 WHERE d_id IN
+(SELECT d_id FROM department1 WHERE department_city="Mumbai");
+
+
