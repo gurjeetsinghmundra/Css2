@@ -1023,4 +1023,19 @@ SELECT d_id FROM department1 WHERE department_city="Mumbai";
 SELECT * FROM employee1 WHERE d_id IN
 (SELECT d_id FROM department1 WHERE department_city="Mumbai");
 
+-- Subqueries is written in this () bracket
+-- All means sabse bada yaa sabse chota 
+-- Any means kissi se be bada ya chota
+
+USE xyz_company;
+SELECT * FROM employee1;
+
+
+SELECT salary FROM employee1 WHERE ename="Manisha" OR ename="Nilesh";
+
+SELECT * FROM employee1 WHERE salary>ALL(SELECT salary FROM employee1 WHERE ename="Manisha" OR ename="Nilesh");
+SELECT * FROM employee1 WHERE salary<ALL(SELECT salary FROM employee1 WHERE ename="Monal" OR ename="Nilesh");
+
+SELECT * FROM employee1 WHERE salary<=ANY(SELECT salary FROM employee1 WHERE ename="Manisha" OR ename="Nilesh");
+SELECT * FROM employee1 WHERE salary>=ANY(SELECT salary FROM employee1 WHERE ename="Manisha" OR ename="Nilesh");
 
