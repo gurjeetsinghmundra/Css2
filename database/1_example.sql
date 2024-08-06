@@ -921,7 +921,7 @@ WHERE e.d_id IS null
 SELECT * FROM employee1,department1;
 
 SELECT * FROM employee1 e,department1 d 
-WHERE e.d_id=d.d_id AND e.d_id="D1";
+WHERE e.d_id=d.d_id AND e.d_id="1";
 
 
 SELECT * FROM department1;
@@ -1039,3 +1039,31 @@ SELECT * FROM employee1 WHERE salary<ALL(SELECT salary FROM employee1 WHERE enam
 SELECT * FROM employee1 WHERE salary<=ANY(SELECT salary FROM employee1 WHERE ename="Manisha" OR ename="Nilesh");
 SELECT * FROM employee1 WHERE salary>=ANY(SELECT salary FROM employee1 WHERE ename="Manisha" OR ename="Nilesh");
 
+-- 
+
+SELECT * FROM employee1 WHERE salary<
+(SELECT salary FROM employee1 WHERE salary<
+(SELECT max(salary) FROM employee1) ORDER BY salary DESC LIMIT 1) ORDER BY salary DESC LIMIT 1;
+
+SELECT * FROM employee1 LIMIT 2,1;
+
+SELECT max(age) FROM employee1;
+SELECT * FROM employee1 WHERE age<(SELECT max(age) FROM employee1) ORDER BY age DESC LIMIT 1;
+
+
+UPDATE employee1 SET d_id=1 WHERE e_id=117;
+SELECT * FROM department1;
+
+SELECT * FROM employee1 WHERE age<(SELECT max(age) FROM employee1) ORDER BY age DESC LIMIT 1;
+
+-- mam method
+SELECT * FROM department1 WHERE d_id=
+(SELECT d_id FROM employee1 WHERE age=
+(SELECT age FROM employee1 WHERE age<
+(SELECT MAX(age) FROM employee1) ORDER BY age DESC LIMIT 1));
+
+-- my method
+SELECT * FROM department1 WHERE d_id=( SELECT d_id FROM employee1
+WHERE age<(SELECT max(age) FROM employee1) ORDER BY age DESC LIMIT 1);
+ 
+ 
