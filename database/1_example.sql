@@ -902,7 +902,9 @@ INSERT  INTO employee1 (e_id,ename,city,salary,age) VALUE
  (7,"Ankita","pune",50000,25);
  
 -- RIGHT JOIN
-SELECT * FROM employee1 e
+
+CREATE VIEW right_join AS
+SELECT e.*,d.department,d.department_city FROM employee1 e
 RIGHT JOIN department1 d 
 ON e.d_id=d.d_id
 GROUP BY d.d_id
@@ -960,6 +962,7 @@ SELECT d_id,department_name FROM department2;
 -- -----------------------------------------------------------------------------------------------------------
 --  Full Outer Joins
 -- left table is priority jada 
+
 
 SELECT * FROM employee1 e
 LEFT JOIN department1 d
@@ -1066,4 +1069,31 @@ SELECT * FROM department1 WHERE d_id=
 SELECT * FROM department1 WHERE d_id=( SELECT d_id FROM employee1
 WHERE age<(SELECT max(age) FROM employee1) ORDER BY age DESC LIMIT 1);
  
- 
+-- 7th August -----------------------------------------------------------------------------------------------------------------------------
+-- Views
+
+
+USE xyz_company;
+CREATE VIEW department_salary AS
+SELECT d_id,sum(salary) FROM employee1 GROUP BY d_id;
+
+SELECT * FROM department_salary;
+
+-- View can be used for security for hidding data
+
+CREATE VIEW emp AS
+SELECT e_id,city,d_id,age,gender FROM employee1;
+
+SELECT * FROM emp;
+
+-- duplicate columns will not be accepted in view
+SELECT * FROM right_join;
+
+--           Types Of Views
+-- Simple View(if only 1 table is involved)
+-- Complex View(more than 1 table involved)
+
+-- For Droping View
+DROP VIEW right_join;
+
+
