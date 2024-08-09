@@ -1080,6 +1080,7 @@ SELECT d_id,sum(salary) FROM employee1 GROUP BY d_id;
 SELECT * FROM department_salary;
 
 -- View can be used for security for hidding data
+-- It is used for creating virtual tables
 
 CREATE VIEW emp AS
 SELECT e_id,city,d_id,age,gender FROM employee1;
@@ -1096,4 +1097,36 @@ SELECT * FROM right_join;
 -- For Droping View
 DROP VIEW right_join;
 
+-- 9th august---------------------------------------------------------------------------------------------
 
+Delimiter is used to change the end
+
+USE xyz_company;
+
+DELIMITER $$
+
+SELECT * FROM employee1$$
+SELECT * FROM department1$$
+
+-- IN OUT INOUT
+
+/*
+DELIMITER $
+CREATE PROCEDURE procedure_name()
+BEGIN
+
+
+END$
+DELIMITER ;
+*/
+
+DELIMITER $
+CREATE PROCEDURE get_employee1()
+BEGIN
+
+	SELECT * FROM employee1;
+
+END$
+DELIMITER ;
+
+CALL get_employee1;

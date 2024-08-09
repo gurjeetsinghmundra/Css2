@@ -86,3 +86,4 @@ LEFT JOIN teachers t
 USING(teacherid);
 
 SELECT * FROM student_teacher_names;
+
