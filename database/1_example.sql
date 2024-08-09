@@ -1110,7 +1110,7 @@ SELECT * FROM department1$$
 
 -- IN OUT INOUT
 
-/*
+/* STORED PROCEDURES (we can take input also)
 DELIMITER $
 CREATE PROCEDURE procedure_name()
 BEGIN
@@ -1130,3 +1130,55 @@ END$
 DELIMITER ;
 
 CALL get_employee1;
+
+DELIMITER $
+CREATE PROCEDURE get_department1_mumbai()
+BEGIN
+
+	SELECT * FROM department1 WHERE department_city="mumbai";
+
+END$
+DELIMITER ;
+
+CALL get_department1_mumbai;
+
+SELECT * FROM department1 ;
+
+DELIMITER $
+CREATE PROCEDURE get_by_city(IN city VARCHAR(100))
+BEGIN
+	SELECT * FROM employee1 WHERE employee1.city=city;
+END$
+DELIMITER ;
+
+DROP PROCEDURE get_by_city;
+
+CALL get_by_city("mumbai");
+
+DESC department1;
+
+DELIMITER $ 
+CREATE PROCEDURE get_by_department(IN d_id INT(10))
+BEGIN
+	SELECT * FROM employee1 WHERE employee1.d_id=d_id;
+END$
+DELIMITER ;
+
+DROP PROCEDURE get_by_department;
+
+CALL get_by_department(2);
+
+-- While calling its called argument
+-- while declaring its called parameters
+
+DELIMITER $ 
+CREATE PROCEDURE update_phoneno(IN e_id INT(10),IN phone_number BIGINT)
+BEGIN
+	UPDATE employee1 SET employee1.phone_number=phone_number WHERE employee1.e_id=e_id;
+END$
+DELIMITER ;
+
+DROP PROCEDURE update_phoneno;
+DESC employee1;
+CALL update_phoneno(117,124214142);
+SELECT * FROM employee1;
