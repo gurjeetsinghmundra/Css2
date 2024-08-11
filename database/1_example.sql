@@ -1182,3 +1182,35 @@ DROP PROCEDURE update_phoneno;
 DESC employee1;
 CALL update_phoneno(117,124214142);
 SELECT * FROM employee1;
+
+-- 12th Aug 
+
+USE xyz_company;
+SET @salary=50000;
+SELECT @salary;
+SELECT * FROM employee1 WHERE salary<@salary;
+
+DELIMITER $
+CREATE PROCEDURE get_year(IN e_id INT(4),OUT reg_year INT)
+BEGIN
+	SELECT YEAR(joining_date) INTO reg_year FROM employee1 WHERE employee1.e_id=e_id;
+END$
+DELIMITER ;
+
+CALL get_year("112",@reg_year);
+SELECT @reg_year;
+SELECT * FROM employee1; 
+SELECT * FROM employee1 WHERE YEAR(joining_date)=@reg_year;
+
+-- self(khudse)
+
+DELIMITER $
+CREATE PROCEDURE get_age(IN e_id INT(4), OUT reg_name VARCHAR(100),OUT reg_age INT)
+BEGIN 
+	SELECT ename,age INTO reg_name,reg_age FROM employee1 WHERE employee1.e_id=e_id;
+END$
+DELIMITER ;
+DROP PROCEDURE get_age;
+
+CALL get_age("112",@reg_name,@reg_age);
+SELECT @reg_name,@reg_age;
