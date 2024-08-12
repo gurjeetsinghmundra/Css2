@@ -1,0 +1,14 @@
+@media screen and (max-width:700px) {
+  body{
+    background-image: url(images/pic2.jfif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:615px;
+    width:20px ;
+  }
+  img{
+    visibility: hidden;
+}
+}
+
+
