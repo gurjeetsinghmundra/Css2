@@ -1197,6 +1197,8 @@ BEGIN
 END$
 DELIMITER ;
 
+DROP PROCEDURE get_year;
+
 CALL get_year("112",@reg_year);
 SELECT @reg_year;
 SELECT * FROM employee1; 
@@ -1214,3 +1216,18 @@ DROP PROCEDURE get_age;
 
 CALL get_age("112",@reg_name,@reg_age);
 SELECT @reg_name,@reg_age;
+
+DELIMITER $ 
+CREATE PROCEDURE get_gender(IN e_id INT(4), OUT reg_gender CHAR(4))
+BEGIN
+  SELECT gender INTO reg_gender FROM employee1 WHERE employee1.e_id=e_id;
+END$
+DELIMITER ;
+
+CALL get_gender("114",@reg_gender);
+SELECT @reg_gender;
+
+-- getCount("Mumbai",@countemp)
+-- getempdetail("d2")
+-- getemployee("a")
+-- getemployeecount("a",@countemp)
