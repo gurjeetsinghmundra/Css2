@@ -1263,3 +1263,63 @@ BEGIN
 END$
 DELIMITER ;
 */
+
+DELIMITER $
+CREATE FUNCTION addition(a INT, b INT)
+RETURNS INT
+BEGIN
+	RETURN a+b;
+END $
+DELIMITER ;
+
+SELECT addition(200,500);
+
+
+DELIMITER $
+CREATE FUNCTION subtraction(a INT, b INT)
+RETURNS INT
+BEGIN 
+	RETURN a-b;
+END $
+DELIMITER ;
+
+SELECT subtraction(200,100);
+
+SELECT UPPER(substr("Hello",1,1));
+SELECT LOWER(substr("Hello",2));
+SELECT CONCAT(UPPER(substr("Hello",1,1)),LOWER(substr("Hello",2)));
+
+DELIMITER $
+CREATE FUNCTION format_name(word VARCHAR(100))
+RETURNS VARCHAR(100)
+BEGIN
+		RETURN CONCAT(UPPER(substr(word,1,1)),LOWER(substr(word,2)));
+END $
+DELIMITER ;
+
+SELECT format_name("gUrjeET");
+SELECT format_name(email),format_name(city) FROM employee1;
+SELECT * FROM employee1;
+SELECT addition(salary,10000) FROM employee1;
+
+DELIMITER $
+CREATE FUNCTION check_grade(marks INT)
+RETURNS CHAR(20)
+BEGIN 
+	DECLARE grade char(20);
+    SET grade=CASE
+			  WHEN marks BETWEEN 0 AND 40 THEN "C"
+              WHEN marks BETWEEN 41 AND 74 THEN "B"
+			  WHEN marks BETWEEN 75 AND 100 THEN "A"	
+              ELSE
+				"INVALID MARKS"
+			  END;
+	RETURN grade;
+END$
+DELIMITER ;
+
+DROP FUNCTION check_grade;
+
+SELECT check_grade(1220);
+
+
