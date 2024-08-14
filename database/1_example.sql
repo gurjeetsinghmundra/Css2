@@ -1231,3 +1231,35 @@ SELECT @reg_gender;
 -- getempdetail("d2")
 -- getemployee("a")
 -- getemployeecount("a",@countemp)
+
+USE xyz_company;
+
+-- 14th August 
+
+DELIMITER $
+CREATE PROCEDURE updatesalary(IN e_id CHAR(4),INOUT salary INT)
+BEGIN
+	DECLARE old_salary INT;
+    SELECT employee1.salary INTO old_salary FROM employee1 WHERE employee1.e_id=e_id;
+    UPDATE employee1 SET employee1.salary=salary WHERE employee1.e_id=e_id;
+    SET salary=old_salary;
+END$
+DELIMITER ;
+
+SET @salary=85000;
+SELECT * FROM employee1;
+CALL updatesalary(111,@salary);
+SELECT @salary;
+
+
+-- Function Syntax
+/*
+DELIMITER $
+CREATE FUNCTION fun_name (p1,p2,....,pn)
+RETURNS datatype
+BEGIN
+	//logic
+    RETURN value;
+END$
+DELIMITER ;
+*/
