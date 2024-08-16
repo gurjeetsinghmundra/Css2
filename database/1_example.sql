@@ -1352,3 +1352,83 @@ END$
 DELIMITER ;
 
 SELECT check_number(101);
+
+DELIMITER $
+CREATE FUNCTION check_age(age int)
+RETURNS BOOLEAN
+BEGIN
+	IF (age>18) THEN
+		RETURN TRUE;
+	ELSE
+		RETURN FALSE;
+	END IF;
+END$
+DELIMITER ;
+
+DROP FUNCTION check_age;
+SELECT check_age(12);
+
+/*
+IF condition THEN 
+	statement1
+ELSEIF condition THEN
+	statement2
+ELSEIF condition THEN
+	statement3
+.
+.
+.
+ELSE statementn
+END IF;
+*/
+
+
+-- Case me insert nhi kara sakte 
+-- Case me by default return he hota hai
+
+-- 1:Eng 2:Marathi 3:Hindi
+
+DELIMITER $
+CREATE FUNCTION choose_language(choice INT)
+RETURNS VARCHAR(20)
+BEGIN
+	IF (choice=1) THEN
+		RETURN "English";
+	ELSEIF (choice=2) THEN
+		RETURN "Marathi";
+	ELSEIF (choice=3) THEN
+		RETURN "HINDI";
+	ELSE 
+		RETURN "Invalid Input";
+	END IF;
+END$
+DELIMITER ;
+
+SELECT choose_language(1);
+
+DELIMITER $
+CREATE FUNCTION check_day(choice INT)
+RETURNS VARCHAR(20)
+BEGIN
+	IF (choice=1) THEN
+		RETURN "Monday";
+	ELSEIF (choice=2) THEN
+		RETURN "Tuesday";
+	ELSEIF (choice=3) THEN
+		RETURN "Wednesday";
+	ELSEIF (choice=4) THEN
+		RETURN "Thursday";
+	ELSEIF (choice=5) THEN
+		RETURN "Friday";
+	ELSEIF (choice=6) THEN
+		RETURN "Saturday";
+    ELSEIF (choice=7) THEN
+       RETURN "Sunday";    
+	ELSE 
+		RETURN "Invalid";
+	END IF;
+END$
+DELIMITER ;
+
+SELECT check_day(4);
+
