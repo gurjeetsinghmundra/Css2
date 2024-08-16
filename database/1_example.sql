@@ -1322,4 +1322,33 @@ DROP FUNCTION check_grade;
 
 SELECT check_grade(1220);
 
+-- 16th August
 
+/*
+Syntax :
+IF condition THEN 
+	statements
+END IF;
+
+IF condition THEN
+		statement1
+ELSE 
+		statement2
+END IF;
+*/
+
+USE xyz_company;
+
+DELIMITER $
+CREATE FUNCTION check_number(n int)
+RETURNS VARCHAR(4)
+BEGIN
+	IF (n%2=0) THEN
+		RETURN "EVEN";
+	ELSE
+		RETURN "ODD";
+	END IF;
+END$
+DELIMITER ;
+
+SELECT check_number(101);
